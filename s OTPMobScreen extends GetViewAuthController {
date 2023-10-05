@@ -1,0 +1,440 @@
+[1mdiff --git a/assets/images/badge.png b/assets/images/badge.png[m
+[1mnew file mode 100644[m
+[1mindex 0000000..5717231[m
+Binary files /dev/null and b/assets/images/badge.png differ
+[1mdiff --git a/assets/images/boxtimenav.png b/assets/images/boxtimenav.png[m
+[1mnew file mode 100644[m
+[1mindex 0000000..04cac7b[m
+Binary files /dev/null and b/assets/images/boxtimenav.png differ
+[1mdiff --git a/assets/images/cam.png b/assets/images/cam.png[m
+[1mnew file mode 100644[m
+[1mindex 0000000..875f003[m
+Binary files /dev/null and b/assets/images/cam.png differ
+[1mdiff --git a/assets/images/home.png b/assets/images/home.png[m
+[1mnew file mode 100644[m
+[1mindex 0000000..00a0641[m
+Binary files /dev/null and b/assets/images/home.png differ
+[1mdiff --git a/assets/images/homenav.png b/assets/images/homenav.png[m
+[1mnew file mode 100644[m
+[1mindex 0000000..00a0641[m
+Binary files /dev/null and b/assets/images/homenav.png differ
+[1mdiff --git a/assets/images/itemnav.png b/assets/images/itemnav.png[m
+[1mnew file mode 100644[m
+[1mindex 0000000..0bcc818[m
+Binary files /dev/null and b/assets/images/itemnav.png differ
+[1mdiff --git a/assets/images/logout.png b/assets/images/logout.png[m
+[1mnew file mode 100644[m
+[1mindex 0000000..fe061db[m
+Binary files /dev/null and b/assets/images/logout.png differ
+[1mdiff --git a/assets/images/nav.png b/assets/images/nav.png[m
+[1mnew file mode 100644[m
+[1mindex 0000000..ce974a5[m
+Binary files /dev/null and b/assets/images/nav.png differ
+[1mdiff --git a/assets/images/navtarget.png b/assets/images/navtarget.png[m
+[1mnew file mode 100644[m
+[1mindex 0000000..0ebc065[m
+Binary files /dev/null and b/assets/images/navtarget.png differ
+[1mdiff --git a/assets/images/usernav.png b/assets/images/usernav.png[m
+[1mnew file mode 100644[m
+[1mindex 0000000..b470d56[m
+Binary files /dev/null and b/assets/images/usernav.png differ
+[1mdiff --git a/lib/main.dart b/lib/main.dart[m
+[1mindex de22efe..5a67cd0 100644[m
+[1m--- a/lib/main.dart[m
+[1m+++ b/lib/main.dart[m
+[36m@@ -4,6 +4,13 @@[m [mimport 'package:courier_app/src/core/constants/user_constants.dart';[m
+ import 'package:courier_app/src/features/auth/auth/preferences_service.dart';[m
+ import 'package:courier_app/src/features/auth/login/login_bindings.dart';[m
+ import 'package:courier_app/src/features/auth/register/register_binding.dart';[m
+[32m+[m[32mimport 'package:courier_app/src/features/features/add_order/add_order_binding.dart';[m
+[32m+[m[32mimport 'package:courier_app/src/features/features/all_item/all_item_binding.dart';[m
+[32m+[m[32mimport 'package:courier_app/src/features/features/home/home_binding.dart';[m
+[32m+[m[32mimport 'package:courier_app/src/features/features/home/home_screen.dart';[m
+[32m+[m[32mimport 'package:courier_app/src/features/features/item_details/details_binding.dart';[m
+[32m+[m[32mimport 'package:courier_app/src/features/features/profile/profile_binding.dart';[m
+[32m+[m[32mimport 'package:courier_app/src/features/features/signature_pad/signature_pad_binding.dart';[m
+ import 'package:courier_app/src/features/features/home/home_binding.dart';[m
+ import 'package:firebase_app_check/firebase_app_check.dart';[m
+ import 'package:flutter/foundation.dart';[m
+[1mdiff --git a/lib/src/components/custom_about_package.dart b/lib/src/components/custom_about_package.dart[m
+[1mindex 043499a..3685af1 100644[m
+[1m--- a/lib/src/components/custom_about_package.dart[m
+[1m+++ b/lib/src/components/custom_about_package.dart[m
+[36m@@ -70,11 +70,15 @@[m [mWidget line ({required String text, required String text2}){[m
+                 color1: AppColors.greyColor,[m
+                 fontWeight: fontWeight500,[m
+                 fontSize: font_12),[m
+[31m-            CustomText([m
+[31m-                text: text2,[m
+[31m-                color1: AppColors.black,[m
+[31m-                fontWeight: fontWeight600,[m
+[31m-                fontSize: font_15),[m
+[32m+[m[32m            Container([m
+[32m+[m[32m              alignment: Alignment.centerRight,[m
+[32m+[m[32m              width: width_150,[m
+[32m+[m[32m              child: CustomText([m
+[32m+[m[32m                  text: text2,[m
+[32m+[m[32m                  color1: AppColors.black,[m
+[32m+[m[32m                  fontWeight: fontWeight600,[m
+[32m+[m[32m                  fontSize: font_15),[m
+[32m+[m[32m            ),[m
+           ],[m
+         ),[m
+         Divider([m
+[1mdiff --git a/lib/src/components/custom_appbar.dart b/lib/src/components/custom_appbar.dart[m
+[1mindex 59e0e36..12e4fed 100644[m
+[1m--- a/lib/src/components/custom_appbar.dart[m
+[1m+++ b/lib/src/components/custom_appbar.dart[m
+[36m@@ -1,3 +1,4 @@[m
+[32m+[m[32mimport 'package:courier_app/src/components/custom_button.dart';[m
+ import 'package:courier_app/src/components/custom_text.dart';[m
+ import 'package:flutter/material.dart';[m
+ import 'package:get/get.dart';[m
+[36m@@ -14,40 +15,21 @@[m [mclass CustomAppbar extends StatelessWidget implements PreferredSizeWidget {[m
+     Key? key,[m
+     required this.appBar,[m
+     this.text,[m
+[31m-    this.fontWeight,[m
+[31m-    this.fontSize,[m
+[31m-    this.textColor,[m
+[31m-    this.isEmptyTitle = true,[m
+[31m-    this.image,[m
+[31m-    this.imageColor,[m
+     this.containerColor,[m
+[31m-    this.margin,[m
+[31m-    this.width,[m
+[31m-    this.height,[m
+[31m-    this.radius,[m
+[31m-    this.isCenter = false,[m
+[31m-    this.isLeading = true,[m
+[31m-    this.isTimer = false,[m
+[32m+[m[32m    this.onPress,[m
+     required this.title,[m
+[32m+[m[32m   this.color,[m
+[32m+[m
+   }) : super(key: key);[m
+ [m
+   final AppBar appBar;[m
+   final String? text;[m
+[31m-  final FontWeight? fontWeight;[m
+[31m-  final double? fontSize;[m
+[31m-  final Color? textColor;[m
+[31m-  final String? image;[m
+[31m-  final Color? imageColor;[m
+   final Color? containerColor;[m
+[31m-  final double? margin;[m
+[31m-  final double? width;[m
+[31m-  final double? height;[m
+[31m-  final double? radius;[m
+[31m-  final bool isCenter;[m
+[31m-  final bool isLeading;[m
+[31m-  final bool isEmptyTitle;[m
+[31m-  final bool isTimer;[m
+   final String title;[m
+[32m+[m[32m  final Function()? onPress;[m
+[32m+[m[32m  final Color? color;[m
+[32m+[m
+[32m+[m
+ [m
+   @override[m
+   Widget build(BuildContext context) {[m
+[36m@@ -59,12 +41,44 @@[m [mclass CustomAppbar extends StatelessWidget implements PreferredSizeWidget {[m
+           color: AppColors.black,[m
+         ),[m
+       ),[m
+[31m-      titleSpacing: 1,[m
+[31m-      title: CustomText(text: title, color1: AppColors.black, fontWeight: fontWeight700, fontSize: font_20),[m
+[32m+[m[32m      titleSpacing: width_1,[m
+[32m+[m[32m      title: Row([m
+[32m+[m[32m        mainAxisAlignment: MainAxisAlignment.spaceBetween,[m
+[32m+[m[32m        children: [[m
+[32m+[m[32m          CustomText(text: title, color1: AppColors.black, fontWeight: fontWeight700, fontSize: font_20),[m
+[32m+[m[32m      Padding([m
+[32m+[m[32m        padding:  EdgeInsets.only(right: margin_10),[m
+[32m+[m[32m        child: Container([m
+[32m+[m[32m         // height: 45,[m
+[32m+[m
+[32m+[m[32m          child: ElevatedButton([m
+[32m+[m[32m            onPressed: onPress,[m
+[32m+[m[32m            style: ButtonStyle([m
+[32m+[m[32m              backgroundColor: MaterialStatePropertyAll([m
+[32m+[m[32m                  containerColor[m
+[32m+[m[32m              ),[m
+[32m+[m[32m              shape: MaterialStatePropertyAll(RoundedRectangleBorder([m
+[32m+[m[32m                  borderRadius: BorderRadius.circular(radius_10)[m
+[32m+[m[32m              ),),[m
+[32m+[m[32m              elevation: MaterialStatePropertyAll(0),[m
+[32m+[m
+[32m+[m[32m            ),[m
+[32m+[m[32m            child: CustomText([m
+[32m+[m[32m              text: text!,[m
+[32m+[m[32m              color1: color!,[m
+[32m+[m[32m              fontWeight: fontWeight500,[m
+[32m+[m[32m              fontSize: font_15,[m
+[32m+[m
+[32m+[m[32m            ),),[m
+[32m+[m[32m        ),[m
+[32m+[m[32m      )        ],[m
+[32m+[m[32m      ),[m
+[32m+[m
+     );[m
+ [m
+   }[m
+ [m
+   @override[m
+   Size get preferredSize => Size.fromHeight(appBar.preferredSize.height);[m
+[32m+[m[32m  Size get preferredSizeWidth => Size.fromWidth(appBar.preferredSize.width);[m
+ }[m
+[1mdiff --git a/lib/src/components/custom_button.dart b/lib/src/components/custom_button.dart[m
+[1mindex ede063c..41466e8 100644[m
+[1m--- a/lib/src/components/custom_button.dart[m
+[1m+++ b/lib/src/components/custom_button.dart[m
+[36m@@ -11,6 +11,7 @@[m [mclass CustomButton extends StatelessWidget {[m
+     required this.fontWeight,[m
+     required this.font,[m
+     required this.onPress,[m
+[32m+[m[32m    this.buttonColor,[m
+   }):super(key:key);[m
+ [m
+ [m
+[36m@@ -19,6 +20,7 @@[m [mclass CustomButton extends StatelessWidget {[m
+   final FontWeight fontWeight;[m
+   final double font;[m
+   final Function() onPress;[m
+[32m+[m[32m  final Color? buttonColor;[m
+ [m
+   @override[m
+   Widget build(BuildContext context) {[m
+[36m@@ -28,7 +30,7 @@[m [mclass CustomButton extends StatelessWidget {[m
+         onPressed: onPress,[m
+         style: ButtonStyle([m
+           backgroundColor: MaterialStatePropertyAll([m
+[31m-            AppColors.orange[m
+[32m+[m[32m            buttonColor ?? AppColors.orange[m
+           ),[m
+           shape: MaterialStatePropertyAll(RoundedRectangleBorder([m
+               borderRadius: BorderRadius.circular(radius_10)[m
+[1mdiff --git a/lib/src/components/custom_headcard.dart b/lib/src/components/custom_headcard.dart[m
+[1mindex 8ca899d..15867f0 100644[m
+[1m--- a/lib/src/components/custom_headcard.dart[m
+[1m+++ b/lib/src/components/custom_headcard.dart[m
+[36m@@ -39,35 +39,39 @@[m [mclass CustomHeadcard extends StatelessWidget {[m
+               height: height_10,[m
+               isDivider: false,[m
+             ),[m
+[31m-[m
+[31m-            TextFormField([m
+[31m-              style: TextStyle(color: AppColors.orange),[m
+[31m-              decoration: InputDecoration([m
+[31m-                labelText: strShippingUID,[m
+[31m-                labelStyle: TextStyle(fontSize: font_12),[m
+[31m-                fillColor: AppColors.white,[m
+[31m-                suffixIcon: InkWell([m
+[31m-                  onTap: (){[m
+[31m-                    print('object');[m
+[31m-                  },[m
+[31m-                  child: Padding([m
+[31m-                    padding: EdgeInsets.only(right: margin_12, top: margin_4, bottom: margin_4),[m
+[31m-                    child: Image(image: AssetImage(ImgAssets.searchIcon), width: width_10),[m
+[31m-                  ),),[m
+[31m-                filled: true,[m
+[31m-                enabledBorder: OutlineInputBorder([m
+[31m-                  borderRadius: BorderRadius.circular(radius_8),[m
+[31m-                  borderSide: BorderSide(color: AppColors.transparent)[m
+[31m-                ),[m
+[31m-                focusedBorder: OutlineInputBorder([m
+[31m-                    borderRadius: BorderRadius.circular(radius_8),[m
+[31m-                    borderSide: BorderSide(color: AppColors.transparent)[m
+[31m-                ),[m
+[31m-              ),[m
+[31m-            )[m
+[32m+[m[41m            [m
+[32m+[m[32m            searchF(suffix: ImgAssets.searchIcon)[m
+           ],[m
+         ),[m
+       ),[m
+     );[m
+   }[m
+ }[m
+[32m+[m
+[32m+[m[32mWidget searchF ({required String suffix, prefixIcon}){[m
+[32m+[m[32m  return  TextFormField([m
+[32m+[m[32m    style: TextStyle(color: AppColors.orange),[m
+[32m+[m[32m    decoration: InputDecoration([m
+[32m+[m[32m      labelText: strShippingUID,[m
+[32m+[m[32m      labelStyle: TextStyle(fontSize: font_12),[m
+[32m+[m[32m      fillColor: AppColors.white,[m
+[32m+[m[32m      suffixIcon: InkWell([m
+[32m+[m[32m        onTap: (){[m
+[32m+[m[32m          print('object');[m
+[32m+[m[32m        },[m
+[32m+[m[32m        child: Padding([m
+[32m+[m[32m          padding: EdgeInsets.only(right: margin_12, top: margin_4, bottom: margin_4),[m
+[32m+[m[32m          child: Image(image: AssetImage(suffix), width: width_10),[m
+[32m+[m[32m        ),),[m
+[32m+[m[32m      filled: true,[m
+[32m+[m[32m      enabledBorder: OutlineInputBorder([m
+[32m+[m[32m          borderRadius: BorderRadius.circular(radius_8),[m
+[32m+[m[32m          borderSide: BorderSide(color: AppColors.transparent)[m
+[32m+[m[32m      ),[m
+[32m+[m[32m      focusedBorder: OutlineInputBorder([m
+[32m+[m[32m          borderRadius: BorderRadius.circular(radius_8),[m
+[32m+[m[32m          borderSide: BorderSide(color: AppColors.transparent)[m
+[32m+[m[32m      ),[m
+[32m+[m[32m    ),[m
+[32m+[m[32m  );[m
+[32m+[m[32m}[m
+[1mdiff --git a/lib/src/components/custom_navigation_bar.dart b/lib/src/components/custom_navigation_bar.dart[m
+[1mnew file mode 100644[m
+[1mindex 0000000..440ca47[m
+[1m--- /dev/null[m
+[1m+++ b/lib/src/components/custom_navigation_bar.dart[m
+[36m@@ -0,0 +1,155 @@[m
+[32m+[m[32mimport 'package:courier_app/src/components/custom_divider.dart';[m
+[32m+[m[32mimport 'package:courier_app/src/core/constants/assets.dart';[m
+[32m+[m[32mimport 'package:courier_app/src/core/constants/dimensions.dart';[m
+[32m+[m[32mimport 'package:courier_app/src/features/features/all_item/all_item_screen.dart';[m
+[32m+[m[32mimport 'package:courier_app/src/features/features/home/home_screen.dart';[m
+[32m+[m[32mimport 'package:courier_app/src/features/features/profile/edit_profile.dart';[m
+[32m+[m[32mimport 'package:courier_app/src/features/features/profile/profile_screen.dart';[m
+[32m+[m[32mimport 'package:flutter/cupertino.dart';[m
+[32m+[m[32mimport 'package:flutter/material.dart';[m
+[32m+[m[32mimport 'package:get/get.dart';[m
+[32m+[m[32mimport 'package:get/get_core/src/get_main.dart';[m
+[32m+[m[32mimport '../core/constants/palette.dart';[m
+[32m+[m
+[32m+[m
+[32m+[m[32mclass CustomNavBar extends StatefulWidget {[m
+[32m+[m[32m  const CustomNavBar({Key? key}) : super(key: key);[m
+[32m+[m
+[32m+[m[32m  @override[m
+[32m+[m[32m  State<CustomNavBar> createState() => _CustomNavBarState();[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mclass _CustomNavBarState extends State<CustomNavBar> {[m
+[32m+[m[32m  int _selectedIndex = 0;[m
+[32m+[m
+[32m+[m[32m  void onItemTapped(int index) {[m
+[32m+[m[32m    setState(() {[m
+[32m+[m[32m      _selectedIndex = index;[m
+[32m+[m[32m    });[m
+[32m+[m[32m  }[m
+[32m+[m
+[32m+[m[32m  bool click = false;[m
+[32m+[m[32m  bool click2 = false;[m
+[32m+[m[32m  bool click3 = false;[m
+[32m+[m[32m  bool click4 = false;[m
+[32m+[m
+[32m+[m[32m  static List<Widget> navigationWidgets = [[m
+[32m+[m[32m    const HomeScreen(),[m
+[32m+[m[32m    const ProfileScreen(),[m
+[32m+[m[32m    EditProfileScreen(),[m
+[32m+[m[32m  ];[m
+[32m+[m
+[32m+[m[32m  @override[m
+[32m+[m[32m  Widget build(BuildContext context) {[m
+[32m+[m[32m    return Scaffold([m
+[32m+[m[32m        bottomNavigationBar: BottomNavigationBar([m
+[32m+[m[32m          backgroundColor: Colors.white,[m
+[32m+[m[32m          unselectedItemColor: const Color(0xFF9B9B9B),[m
+[32m+[m[32m          selectedItemColor: Colors.red,[m
+[32m+[m[32m          onTap: onItemTapped,[m
+[32m+[m[32m          currentIndex: _selectedIndex,[m
+[32m+[m[32m          elevation: 2,[m
+[32m+[m[32m          items:  [[m
+[32m+[m[32m            BottomNavigationBarItem([m
+[32m+[m[32m                icon: IconButton(onPressed: (){[m
+[32m+[m[32m                  setState(() {[m
+[32m+[m[32m                    click =! click;[m
+[32m+[m[32m                    if(click2=false){[m
+[32m+[m[32m                      click2=true;[m
+[32m+[m[32m                    }else if(click3=false){[m
+[32m+[m[32m                      click2=true;[m
+[32m+[m[32m                    } else if(click4=false){[m
+[32m+[m[32m                      click2=true;[m
+[32m+[m[32m                    }[m
+[32m+[m[32m                  });[m
+[32m+[m[32m                  Get.to(AllItemScreen());[m
+[32m+[m[32m                  print('object');[m
+[32m+[m[32m                }, icon:[m
+[32m+[m[32m                Image.asset( ImgAssets.homeNav,color: AppColors.orange, colorBlendMode:click==false? BlendMode.modulate: BlendMode.srcIn,)),[m
+[32m+[m[32m            ),[m
+[32m+[m[32m            BottomNavigationBarItem([m
+[32m+[m[32m              icon: IconButton(onPressed: (){[m
+[32m+[m[32m                setState(() {[m
+[32m+[m[32m                  click2 =! click2;[m
+[32m+[m[32m                  if(click=false){[m
+[32m+[m[32m                    click=true;[m
+[32m+[m[32m                  }else if(click3=false){[m
+[32m+[m[32m                    click=true;[m
+[32m+[m[32m                  } else if(click4=false){[m
+[32m+[m[32m                    click=true;[m
+[32m+[m[32m                  }[m
+[32m+[m[32m                });[m
+[32m+[m[32m                Get.to(AllItemScreen());[m
+[32m+[m[32m                print('object');[m
+[32m+[m[32m              }, icon:[m
+[32m+[m[32m              Image.asset( ImgAssets.boxTimeNav,color: AppColors.orange, colorBlendMode:click2==false? BlendMode.modulate: BlendMode.srcIn,)),[m
+[32m+[m[32m            ),[m
+[32m+[m[32m            BottomNavigationBarItem([m
+[32m+[m[32m              icon: IconButton(onPressed: (){[m
+[32m+[m[32m                setState(() {[m
+[32m+[m[32m                  click3 =! click3;[m
+[32m+[m[32m                  if(click=false){[m
+[32m+[m[32m                    click2=true;[m
+[32m+[m[32m                  }else if(click2=false){[m
+[32m+[m[32m                    click2=true;[m
+[32m+[m[32m                  } else if(click4=false){[m
+[32m+[m[32m                    click2=true;[m
+[32m+[m[32m                  }[m
+[32m+[m[32m                });[m
+[32m+[m[32m                Get.to(AllItemScreen());[m
+[32m+[m[32m                print('object');[m
+[32m+[m[32m              }, icon:[m
+[32m+[m[32m              Image.asset( ImgAssets.itemNav,color: AppColors.orange, colorBlendMode:click3==false? BlendMode.modulate: BlendMode.srcIn,)),[m
+[32m+[m[32m            ),[m
+[32m+[m[32m            BottomNavigationBarItem([m
+[32m+[m[32m              icon: IconButton(onPressed: (){[m
+[32m+[m[32m                setState(() {[m
+[32m+[m[32m                  click4 =! click4;[m
+[32m+[m[32m                  if(click=false){[m
+[32m+[m[32m                    click2=true;[m
+[32m+[m[32m                  }else if(click2=false){[m
+[32m+[m[32m                    click2=true;[m
+[32m+[m[32m                  } else if(click3=false){[m
+[32m+[m[32m                    click2=true;[m
+[32m+[m[32m                  }[m
+[32m+[m[32m                });[m
+[32m+[m[32m                Get.to(AllItemScreen());[m
+[32m+[m[32m                print('object');[m
+[32m+[m[32m              }, icon:[m
+[32m+[m[32m              Image.asset( ImgAssets.userNav,color: AppColors.orange, colorBlendMode:click4==false? BlendMode.modulate: BlendMode.srcIn,)),[m
+[32m+[m[32m            ),[m
+[32m+[m
+[32m+[m[32m          ],[m
+[32m+[m[32m        ),[m
+[32m+[m[32m        body: IndexedStack([m
+[32m+[m[32m            index: _selectedIndex,[m
+[32m+[m[32m            children: navigationWidgets[m
+[32m+[m[32m            ),[m
+[32m+[m[32m        );[m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m
+[32m+[m
+[32m+[m[32m// CustomDivider([m
+[32m+[m[32m// width: width_50,[m
+[32m+[m[32m// ),[m
+[32m+[m
+[32m+[m[32m// IconButton(onPressed: (){[m
+[32m+[m[32m// setState(() {[m
+[32m+[m[32m// click4 =! click4;[m
+[32m+[m[32m// if(click=false){[m
+[32m+[m[32m// click2=true;[m
+[32m+[m[32m// }else if(click2=false){[m
+[32m+[m[32m// click2=true;[m
+[32m+[m[32m// } else if(click3=false){[m
+[32m+[m[32m// click2=true;[m
+[32m+[m[32m// }

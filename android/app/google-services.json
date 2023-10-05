@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "834423802937",
+    "project_id": "ziplinez",
+    "storage_bucket": "ziplinez.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:834423802937:android:bb3f91c1772f3a7c4611e8",
+        "android_client_info": {
+          "package_name": "com.example.ziplinez"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "834423802937-676s42gpv1bs6nikisaqkt9gbnl6um9u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ziplinez",
+            "certificate_hash": "c473a4e92487bc2c7b3f29fb0cb1a4075b9f8faa"
+          }
+        },
+        {
+          "client_id": "834423802937-po87keu3kvshqqqvmdgj5fhv3ckts9fp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSCacfy5r0tSFJe4HOF1FeUmoZxFEsL98"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "834423802937-po87keu3kvshqqqvmdgj5fhv3ckts9fp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "834423802937-a53ccspunb0ei1tnta0ngefj1fp7de1n.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.ziplinez"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
